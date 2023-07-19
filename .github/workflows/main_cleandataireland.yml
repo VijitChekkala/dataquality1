@@ -8,19 +8,19 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Set up Python version
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v2
 
       - name: Set up Node.js version
         uses: actions/setup-node@v2
         with:
-          node-version: '14.x'
+          node-version: '12.x'
 
       - name: Create and start virtual environment
         run: |
@@ -41,7 +41,7 @@ jobs:
             !venv/
 
   deploy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     needs: build
     environment:
       name: 'Production'
